@@ -21,7 +21,9 @@ export default function EditEventPage({ evt,token }) {
     name: evt.name,
     performers: evt.performers,
     venue: evt.venue,
+    address: evt.address,
     date: evt.date,
+    time: evt.time,
     description: evt.description,
   })
   const [imagePreview, setImagePreview] = useState(

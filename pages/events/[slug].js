@@ -63,7 +63,7 @@ export default function Event({evt}) {
                 <h3>نویسنده:</h3>
                 <p>{evt.performers}</p>
                 <h3>شرح مطلب:</h3>
-                <p>{evt.description}</p>
+                <p style={{textAlign:'justify'}}>{evt.description}</p>
                 <h3>کلید واژه‌ها:</h3>
                 <p>{evt.venue}</p>
                 {/* <h3>Address:</h3>
