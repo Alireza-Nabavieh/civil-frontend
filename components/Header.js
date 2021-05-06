@@ -12,7 +12,7 @@ export default function Header() {
         <header className={styles.header}>  
             <div className={styles.logo}>
                 <Link href='/'>
-                <a> Digikala IP</a>
+                <a> Civil Engineering</a>
                 </Link>
             </div>
            <Search/>

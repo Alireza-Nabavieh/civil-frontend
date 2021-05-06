@@ -21,9 +21,7 @@ export default function EditEventPage({ evt,token }) {
     name: evt.name,
     performers: evt.performers,
     venue: evt.venue,
-    address: evt.address,
     date: evt.date,
-    time: evt.time,
     description: evt.description,
   })
   const [imagePreview, setImagePreview] = useState(
@@ -129,16 +127,6 @@ export default function EditEventPage({ evt,token }) {
             />
           </div>
           <div>
-            <label htmlFor='address'>آدرس</label>
-            <input
-              type='text'
-              name='address'
-              id='address'
-              value={values.address}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
             <label htmlFor='date'>تاریخ</label>
               {/* <input
                 type='date'
@@ -157,16 +145,6 @@ export default function EditEventPage({ evt,token }) {
             />
 
           </div>
-          <div>
-            <label htmlFor='time'>زمان</label>
-            <input
-              type='text'
-              name='time'
-              id='time'
-              value={values.time}
-              onChange={handleInputChange}
-            />
-          </div>
         </div>
 
         <div>
@@ -179,7 +157,6 @@ export default function EditEventPage({ evt,token }) {
             onChange={handleInputChange}
           ></textarea>
         </div>
-
         <input type='submit' value='بروزرسانی' className='btn' />
       </form>
 
@@ -188,7 +165,7 @@ export default function EditEventPage({ evt,token }) {
         <Image src={imagePreview} height={100} width={170} />
       ) : (
         <div>
-          <p>No image uploaded</p>
+          <p>تصویری ثبت نشده است</p>
         </div>
       )}
 
@@ -197,7 +174,7 @@ export default function EditEventPage({ evt,token }) {
           onClick={() => setShowModal(true)}
           className='btn-secondary btn-icon'
         >
-          <FaImage /> Set Image
+          <FaImage />درج تصویر
         </button>
       </div>
 

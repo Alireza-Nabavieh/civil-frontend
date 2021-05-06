@@ -19,7 +19,7 @@ export default function HomePage({events}) {
 
         {events.length>0 && (
               <Link href="/events">
-                <a className='btn-secondary'> نمایش تمام محتوا</a>
+                <a className='btn-secondary'> نمایش تمام مطالب</a>
               </Link>
             )}
     </Layout>
@@ -33,7 +33,8 @@ export async function getStaticProps(){
 
   return {
       props:{events,
-        revalidate : 1},
+       },
+       revalidate : 1
   }
 }
 

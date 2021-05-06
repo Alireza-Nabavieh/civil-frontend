@@ -27,7 +27,7 @@ export default function Layout({ title, keywords, description, children }) {
 }
 
 Layout.defaultProps = {
-  title: 'واحد خرید داخلی',
-  description: 'پشتیبانی از خرید داخلی دیجی کالا',
-  keywords: 'ip, Ddigikala, purchase',
+  title: 'آموزش مهندسی عمران و ساخت و ساز',
+  description: 'ارائه مطالب آموزشی، خدمات مهندسی در حوزه صنعت ساخت و ساز',
+  keywords: 'civil، آموزش, ساخت و ساز, عمران',
 }

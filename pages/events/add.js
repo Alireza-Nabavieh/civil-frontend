@@ -41,6 +41,13 @@ export default function AddEventPage
     const    handleSubmit= async (e)=>{
         e.preventDefault()
         const hasEmptyFields=Object.values(values).some((element)=>element==='')
+
+        // create slug
+        const totalRes= await fetch(`${API_URL}/events/count`)
+        const total=await totalRes.json()
+        const numContent=total+1
+        values.slug='content-'+numContent
+
         if(hasEmptyFields){
            toast.error("لظفاً تمام گزینه‌ها تکمیل کنید")
         }
@@ -87,9 +94,9 @@ export default function AddEventPage
     }
 
     return (
-        <Layout title={'درخواست پشتیبانی'}>
+        <Layout title={'ثبت مطلب'}>
             <Link href="/events">بازگشت</Link>
-            <h1>ثبت محتوا</h1>
+            <h1>ثبت مطلب آموزشی</h1>
             <ToastContainer bodyClassName="leftshow"/>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.grid}>
@@ -104,7 +111,7 @@ export default function AddEventPage
                     />
                 </div>
                 <div>
-                    <label htmlFor='performers'>ثبت کننده</label>
+                    <label htmlFor='performers'>نویسنده</label>
                     <input
                     type='text'
                     name='performers'
@@ -124,17 +131,7 @@ export default function AddEventPage
                     />
                 </div>
                 <div>
-                    <label htmlFor='address'>آدرس</label>
-                    <input
-                    type='text'
-                    name='address'
-                    id='address'
-                    value={values.address}
-                    onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='date'>تاریخ</label>
+                    <label htmlFor='date'>تاریخ انتشار</label>
                     {/* <input
                     type='date'
                     name='date'
@@ -150,19 +147,7 @@ export default function AddEventPage
 					preSelected={moment().format('jYYYY/jMM/jDD')}
 					/>
                 </div>
-
-                <div>
-                    <label htmlFor='time'>زمان</label>
-                    <input
-                    type='text'
-                    name='time'
-                    id='time'
-                    value={values.time}
-                    onChange={handleInputChange}
-                    />
                 </div>
-                </div>
-
                  <div>
                     <label htmlFor='description'>شرح مطلب</label>
                     <textarea

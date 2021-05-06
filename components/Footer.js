@@ -8,7 +8,7 @@ export default function Footer() {
         <footer className={styles.footer}>
             <p> Copyright &copy;  Digikala IP</p>
             <p>
-                 <Link href="/about"> معرفی تیم خرید </Link>
+                 <Link href="/about"> معرفی اعضای سایت  </Link>
             </p>
         </footer>
     )
