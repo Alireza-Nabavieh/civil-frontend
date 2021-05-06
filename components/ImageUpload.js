@@ -34,7 +34,7 @@ export default function ImageUpload({evtId, imageUploaded,token}) {
     
     return (
         <div className={styles.form}>
-           <h1>Upload Event Image</h1>
+           <h1>آپلئ تصویر</h1>
            <form onSubmit={handleSubmit}>
                <div className={styles.file}>
                    <input type="file" onChange={handleFileChaneg} />
