@@ -49,7 +49,7 @@ export default function AddEventPage
         values.slug='content-'+numContent
 
         if(hasEmptyFields){
-           toast.error("لظفاً تمام گزینه‌ها تکمیل کنید")
+           toast.error("لظفاً تمام فیلدها را تکمیل کنید")
         }
         else {
             const res=await fetch(`${API_URL}/events`,{

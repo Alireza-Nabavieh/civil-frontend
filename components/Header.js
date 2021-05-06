@@ -20,7 +20,7 @@ export default function Header() {
                 <ul>
                     <li>
                         <Link href='/events'>
-                        <a>لیست محتوا</a>
+                        <a>مطالب آموزشی</a>
                         </Link>
                     </li>
                     {user ? 
@@ -28,7 +28,7 @@ export default function Header() {
                      <>
                         <li>
                             <Link href='/events/add'>
-                                <a>ثبت محتوا</a>
+                                <a>ثبت مطلب</a>
                             </Link>
                         </li>
                         <li>
