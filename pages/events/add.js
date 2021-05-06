@@ -32,9 +32,7 @@ export default function AddEventPage
         name:'',
         performers:'',
         venue:'',
-        address:'',
         date:currentDate(),
-        time:'',
         description:'',
     })
     const router=useRouter()
