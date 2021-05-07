@@ -57,7 +57,7 @@ export default function Event({evt}) {
                 <ToastContainer bodyClassName="leftshow"/>
                 {evt.image && (
                     <div className={styles.image}>
-                        <Image src={evt.image.formats.medium.url} width={960} height={600}/>
+                        <Image src={evt.image.formats.medium && evt.image.formats.medium.url } width={960} height={600}/>
                     </div>
                 )}
                 <h3>نویسنده:</h3>

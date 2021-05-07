@@ -27,6 +27,8 @@ export default function AddEventPage
         const ddChars = dd.split('');
         return yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
     }
+
+    const [loading, setLoading]=useState(false)
      
     const [values, setValues]=useState({
         name:'',
@@ -38,6 +40,7 @@ export default function AddEventPage
     const router=useRouter()
     const    handleSubmit= async (e)=>{
         e.preventDefault()
+        setLoading(true)
         const hasEmptyFields=Object.values(values).some((element)=>element==='')
 
         // create slug
@@ -48,6 +51,7 @@ export default function AddEventPage
 
         if(hasEmptyFields){
            toast.error("لظفاً تمام فیلدها را تکمیل کنید")
+           setLoading(false)
         }
         else {
             const res=await fetch(`${API_URL}/events`,{
@@ -62,8 +66,10 @@ export default function AddEventPage
             if(!res.ok){
                 if(res.status===403 || res.status===401){
                     toast.error('دسترسی ندارید!')
+                    setLoading(false)
                     return
                 }
+                setLoading(false)
                 toast.error('مشکلی به وجود آمده است!')
             }
             else{
@@ -156,7 +162,20 @@ export default function AddEventPage
                         onChange={handleInputChange}
                     ></textarea>
                 </div>
-                <input type='submit' value='ثبت' className='btn' />
+                   {
+                       !loading ? (
+                        <input type='submit' value='ثبت' className='btn' />
+                       ) : 
+                       (
+                        <button style={{width:'100%', opacity:'0.6'}} disabled type='submit'  className='btn' >
+                            <span
+                            className="spinner-border spinner-border-sm"
+                            ></span>
+                        </button>
+                       )
+                   }
+ 
+               
             </form>
         </Layout>
     )

@@ -17,6 +17,9 @@ import {DatePicker} from "react-advance-jalaali-datepicker";
 import moment from 'jalali-moment'
 
 export default function EditEventPage({ evt,token }) {
+
+  const [loading, setLoading]=useState(false)
+
   const [values, setValues] = useState({
     name: evt.name,
     performers: evt.performers,
@@ -33,7 +36,9 @@ export default function EditEventPage({ evt,token }) {
   const router = useRouter()
 
   const handleSubmit = async (e) => {
+   
     e.preventDefault()
+    setLoading(true)
 
     // Validation
     const hasEmptyFields = Object.values(values).some(
@@ -41,6 +46,7 @@ export default function EditEventPage({ evt,token }) {
     )
 
     if (hasEmptyFields) {
+      setLoading(false)
       toast.error('لطفاً تمام فیلدها را تکمیل کنید')
     }
 
@@ -54,6 +60,7 @@ export default function EditEventPage({ evt,token }) {
     })
 
     if (!res.ok) {
+      setLoading(false)
       if (res.status === 403 || res.status === 401) {
         toast.error('عدم دسترسی')
         return
@@ -158,7 +165,21 @@ export default function EditEventPage({ evt,token }) {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <input type='submit' value='بروزرسانی' className='btn' />
+
+                   {
+                       !loading ? (
+                        <input type='submit' value='بروزرسانی' className='btn' />
+                       ) : 
+                       (
+                        <button style={{width:'100%', opacity:'0.6'}} disabled type='submit'  className='btn' >
+                            <span
+                            className="spinner-border spinner-border-sm"
+                            ></span>
+                        </button>
+                       )
+                   }
+
+        
       </form>
 
       <h2>تصویر</h2>

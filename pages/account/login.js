@@ -38,7 +38,7 @@ export default function LoginPage() {
                      <input type="submit" value="ورود" className="btn" />
                  </form>
                  <p>
-                     اکانت کاربری ندارید؟ <Link href='/account/register'>ثبت نام</Link>
+                     حساب کاربری ندارید؟ <Link href='/account/register'>ثبت نام</Link>
                  </p>
             </div>
         </Layout>

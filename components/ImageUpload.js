@@ -7,8 +7,13 @@ import styles from '@/styles/Form.module.css'
 export default function ImageUpload({evtId, imageUploaded,token}) {
     const [image,setImage]=useState(null)
 
+    const [loading, setLoading]=useState(false)
+
     const handleSubmit=async (e)=>{
+        
         e.preventDefault()
+        setLoading(true)
+
         const formData=new FormData()
         formData.append('files',image)
         formData.append('ref', 'events')
@@ -24,7 +29,11 @@ export default function ImageUpload({evtId, imageUploaded,token}) {
         })
 
         if(res.ok){
+            setLoading(false)
             imageUploaded()
+        }
+        else if(!res.ok){
+            setLoading(false)
         }
     }
 
@@ -39,7 +48,21 @@ export default function ImageUpload({evtId, imageUploaded,token}) {
                <div className={styles.file}>
                    <input type="file" onChange={handleFileChaneg} />
                </div>
-               <input type="submit" value="Upload" className="btn" />
+
+                  {
+                       !loading ? (
+                        <input type="submit" value="آپلود" className="btn" />
+                       ) : 
+                       (
+                        <button style={{width:'100%', opacity:'0.6'}} disabled type='submit'  className='btn' >
+                            <span
+                            className="spinner-border spinner-border-sm"
+                            ></span>
+                        </button>
+                       )
+                   }
+
+             
            </form>
         </div>
     )
